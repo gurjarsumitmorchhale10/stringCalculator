@@ -47,4 +47,10 @@ class StringCalculatorTest {
         assertEquals(16, stringCalculator.add("5,4\n7"));
         assertEquals(19, stringCalculator.add("8,5,2\n4"));
     }
+
+    @Test
+    void testAdd_should_handle_given_delimiter_and_return_sum_of_arguments() {
+        assertEquals(16, stringCalculator.add("//;\n5;4;7"));
+        assertEquals(19, stringCalculator.add("//;\n8;5;2;4"));
+    }
 }
