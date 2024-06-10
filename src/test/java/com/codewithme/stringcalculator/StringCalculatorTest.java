@@ -61,6 +61,6 @@ class StringCalculatorTest {
     void testAdd_should_throw_exception_if_input_contains_negative_numbers() {
         RuntimeException invalidArgumentException = catchRuntimeException(() -> stringCalculator.add("1,-2"));
         assertThat(invalidArgumentException).isInstanceOf(InvalidArgumentException.class);
-        assertThat(invalidArgumentException).hasMessageContaining("negative numbers not allowed: -2");
+        assertThat(invalidArgumentException).hasMessageContaining("negatives not allowed: -2");
     }
 }

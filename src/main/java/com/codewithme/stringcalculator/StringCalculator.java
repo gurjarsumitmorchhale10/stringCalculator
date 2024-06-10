@@ -2,6 +2,7 @@ package com.codewithme.stringcalculator;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StringCalculator {
 
@@ -12,7 +13,12 @@ public class StringCalculator {
         }
         else
         {
-            sum=extractNumbers(str).stream().reduce(sum,Integer::sum);
+            List<Integer> extractedNumbers = extractNumbers(str);
+            String negatives = extractedNumbers.stream().filter(num -> num < 0).map(String::valueOf).collect(Collectors.joining(", "));
+            if (!negatives.isEmpty()) {
+                throw new InvalidArgumentException("negatives not allowed: " + negatives);
+            }
+            sum= extractedNumbers.stream().reduce(sum,Integer::sum);
         }
 
         return sum;
