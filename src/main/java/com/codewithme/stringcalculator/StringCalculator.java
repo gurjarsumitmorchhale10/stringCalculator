@@ -7,7 +7,10 @@ public class StringCalculator {
         if (str == null || str.isEmpty() || str.isBlank()) {
             return sum;
         }
-
+        else
+        {
+            sum=Integer.parseInt(str);
+        }
         return sum;
     }
 }
