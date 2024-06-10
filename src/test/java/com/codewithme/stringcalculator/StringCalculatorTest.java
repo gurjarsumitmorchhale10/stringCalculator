@@ -4,7 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchRuntimeException;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 
 class StringCalculatorTest {
@@ -52,5 +55,12 @@ class StringCalculatorTest {
     void testAdd_should_handle_given_delimiter_and_return_sum_of_arguments() {
         assertEquals(16, stringCalculator.add("//;\n5;4;7"));
         assertEquals(19, stringCalculator.add("//;\n8;5;2;4"));
+    }
+
+    @Test
+    void testAdd_should_throw_exception_if_input_contains_negative_numbers() {
+        RuntimeException invalidArgumentException = catchRuntimeException(() -> stringCalculator.add("1,-2"));
+        assertThat(invalidArgumentException).isInstanceOf(InvalidArgumentException.class);
+        assertThat(invalidArgumentException).hasMessageContaining("negative numbers not allowed: -2");
     }
 }
