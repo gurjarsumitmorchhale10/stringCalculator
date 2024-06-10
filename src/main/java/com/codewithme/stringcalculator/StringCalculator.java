@@ -19,6 +19,7 @@ public class StringCalculator {
     }
 
     private List<Integer> extractNumbers(String str) {
+        str = str.replaceAll("\n", ",");
         return Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).boxed().toList();
     }
 }
