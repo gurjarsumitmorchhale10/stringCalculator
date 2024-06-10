@@ -33,4 +33,11 @@ class StringCalculatorTest {
         assertEquals(5, stringCalculator.add("5"));
         assertEquals(11, stringCalculator.add("11"));
     }
+
+    @Test
+    void testAdd_should_return_sum_of_all_arguments() {
+        assertEquals(3, stringCalculator.add("1,2"));
+        assertEquals(16, stringCalculator.add("5,4,7"));
+        assertEquals(19, stringCalculator.add("8,5,2,4"));
+    }
 }
