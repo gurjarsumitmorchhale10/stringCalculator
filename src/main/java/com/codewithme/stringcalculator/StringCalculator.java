@@ -16,7 +16,7 @@ public class StringCalculator {
             List<Integer> extractedNumbers = extractNumbers(str);
             String negatives = extractedNumbers.stream().filter(num -> num < 0).map(String::valueOf).collect(Collectors.joining(", "));
             if (!negatives.isEmpty()) {
-                throw new InvalidArgumentException("negatives not allowed: " + negatives);
+                throw new InvalidArgumentException("negative numbers not allowed " + negatives);
             }
             sum= extractedNumbers.stream().reduce(sum,Integer::sum);
         }
