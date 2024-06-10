@@ -27,4 +27,10 @@ class StringCalculatorTest {
         assertEquals(0, stringCalculator.add(""));
     }
 
+    @Test
+    void testAdd_should_return_argumentIntValue_if_input_is_single_argument() {
+        assertEquals(1, stringCalculator.add("1"));
+        assertEquals(5, stringCalculator.add("5"));
+        assertEquals(11, stringCalculator.add("11"));
+    }
 }
