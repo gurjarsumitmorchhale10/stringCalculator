@@ -19,7 +19,8 @@ public class StringCalculator {
     }
 
     private List<Integer> extractNumbers(String str) {
-        str = str.replaceAll("\n", ",");
-        return Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).boxed().toList();
+        String delimiter = str.startsWith("//") ? str.substring(2, str.indexOf("\n")) : ",";
+        str = str.replaceAll("//" + delimiter + "\n", "").replaceAll("\n", delimiter);
+        return Arrays.stream(str.split(delimiter)).mapToInt(Integer::parseInt).boxed().toList();
     }
 }
